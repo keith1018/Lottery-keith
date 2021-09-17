@@ -47,4 +47,7 @@ public class ApiTest {
         logger.info("测试结果：{}", JSON.toJSONString(activity));
     }
 
+    public static void main(String[] args) {
+    System.out.println(258&1);
+    }
 }

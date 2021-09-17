@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itedus.lottery.infrastructure.dao.IStrategyDetailDao">
+    <select id="queryStrategyDetailList" resultType="cn.itedus.lottery.infrastructure.po.StrategyDetail">
+        select id,
+               strategy_id         strategyId,
+               award_id            awardId,
+               award_name          awardName,
+               award_count         awardCount,
+               award_surplus_count awardSurplusCount,
+               award_rate          awardRate,
+               create_time         createTime,
+               update_time         updateTime
+        from strategy_detail
+        where strategy_id = #{strategyId}
+    </select>
+    <select id="queryExcludeAwardIds" resultType="java.lang.String">
+        select
+               award_id
+        from strategy_detail
+        where strategy_id = #{strategyId}
+        and award_surplus_count <![CDATA[<=]]> 0
+    </select>
+</mapper>
